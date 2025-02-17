@@ -11,5 +11,13 @@ export function add(numbers: string): number {
   }
 
   const numArray = numbers.split(customDelimiter || DELIMITER);
+  checkForNegativeNumbers(numArray);
   return numArray.reduce((sum, num) => sum + parseInt(num), 0);
+}
+
+function checkForNegativeNumbers(numArray: string[]) {
+  const negatives = numArray.filter((num) => parseInt(num) < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+  }
 }
