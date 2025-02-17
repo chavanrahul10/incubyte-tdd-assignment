@@ -30,4 +30,9 @@ describe("String Calculator", () => {
     const result = add("3\n4,10");
     expect(result).toBe(17);
   });
+
+  it("should handle custom delimiter", () => {
+    const result = add("//;\n3;4;3");
+    expect(result).toBe(10);
+  });
 });
