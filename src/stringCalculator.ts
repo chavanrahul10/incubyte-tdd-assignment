@@ -10,13 +10,15 @@ export function add(numbers: string): number {
     numbers = numbers.slice(delimiterEndIndex + 1);
   }
 
-  const numArray = numbers.split(customDelimiter || DELIMITER);
+  const numArray = numbers
+    .split(customDelimiter || DELIMITER)
+    .map((num) => parseInt(num));
   checkForNegativeNumbers(numArray);
-  return numArray.reduce((sum, num) => sum + parseInt(num), 0);
+  return numArray.reduce((sum, num) => sum + num, 0);
 }
 
-function checkForNegativeNumbers(numArray: string[]) {
-  const negatives = numArray.filter((num) => parseInt(num) < 0);
+function checkForNegativeNumbers(numArray: number[]) {
+  const negatives = numArray.filter((num) => num < 0);
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
   }
