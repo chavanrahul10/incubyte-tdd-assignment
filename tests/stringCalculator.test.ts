@@ -64,4 +64,22 @@ describe("String Calculator", () => {
       "negative numbers not allowed -1,-2"
     );
   });
+
+  it("should handle delimiter at start", () => {
+    const result = add(",1,2");
+    expect(result).toBe(3);
+  });
+
+  it("should handle delimiter at end", () => {
+    const result = add("1,2,");
+    expect(result).toBe(3);
+  });
+  it("should handle multiple successive delimiters in string", () => {
+    const result = add("1\n,2");
+    expect(result).toBe(3);
+  });
+  it("should handle spaces in the string", () => {
+    const result = add("1 ,2");
+    expect(result).toBe(3);
+  });
 });
