@@ -10,9 +10,10 @@ export function add(numbers: string): number {
     numbers = numbers.slice(delimiterEndIndex + 1);
   }
 
-  const numArray = numbers
-    .split(customDelimiter || DELIMITER)
-    .map((num) => parseInt(num));
+  const numArray = numbers.split(customDelimiter || DELIMITER).map((num) => {
+    num = num.trim();
+    return num ? parseInt(num) : 0;
+  });
   checkForNegativeNumbers(numArray);
   return numArray.reduce((sum, num) => sum + num, 0);
 }
