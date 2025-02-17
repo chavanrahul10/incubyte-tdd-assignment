@@ -35,4 +35,33 @@ describe("String Calculator", () => {
     const result = add("//;\n3;4;3");
     expect(result).toBe(10);
   });
+
+  it("should throw an error if there is negative number", () => {
+    expect(() => add("2,-2")).toThrow("negative numbers not allowed -2");
+  });
+
+  it("should throw an error if there are negative numbers", () => {
+    expect(() => add("1,-1,2,-2")).toThrow(
+      "negative numbers not allowed -1,-2"
+    );
+  });
+
+  it("should throw an error if there is negative number (with \\n)", () => {
+    expect(() => add("2\n3,-2")).toThrow("negative numbers not allowed -2");
+  });
+  it("should throw an error if there are negative numbers (with \\n)", () => {
+    expect(() => add("1\n-1,2,-2")).toThrow(
+      "negative numbers not allowed -1,-2"
+    );
+  });
+
+  it("should throw an error if there is negative number (with custom delimiter)", () => {
+    expect(() => add("//;\n2;-2")).toThrow("negative numbers not allowed -2");
+  });
+
+  it("should throw an error if there are negative numbers (with custom delimiter)", () => {
+    expect(() => add("//;\n1;-1;2;-2")).toThrow(
+      "negative numbers not allowed -1,-2"
+    );
+  });
 });
