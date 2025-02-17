@@ -1,5 +1,5 @@
 export function add(numbers: string): number {
-  if (numbers === "") {
+  if (numbers.trim() === "") {
     return 0;
   }
 
