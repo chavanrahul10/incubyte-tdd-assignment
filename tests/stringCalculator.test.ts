@@ -15,4 +15,14 @@ describe("String Calculator", () => {
     const result = add(" ");
     expect(result).toBe(0);
   });
+
+  it("should return addition of numbers separated by comma", () => {
+    const result = add("1,2");
+    expect(result).toBe(3);
+  });
+
+  it("should return addition of all the numbers separated by comma", () => {
+    const result = add("2,3,4,5,6");
+    expect(result).toBe(20);
+  });
 });
