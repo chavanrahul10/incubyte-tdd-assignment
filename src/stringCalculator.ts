@@ -15,7 +15,10 @@ export function add(numbers: string): number {
     return num ? parseInt(num) : 0;
   });
   checkForNegativeNumbers(numArray);
-  return numArray.reduce((sum, num) => sum + num, 0);
+  return numArray.reduce((sum, num) => {
+    if (num > 1000) return sum;
+    return sum + num;
+  }, 0);
 }
 
 function checkForNegativeNumbers(numArray: number[]) {

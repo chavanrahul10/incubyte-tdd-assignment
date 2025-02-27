@@ -82,4 +82,8 @@ describe("String Calculator", () => {
     const result = add("1 ,2");
     expect(result).toBe(3);
   });
+
+  it("should not consider numbers greater than 1000", () => {
+    expect(add("1001,1,2,3")).toBe(6);
+  });
 });
