@@ -7,6 +7,10 @@ export function add(numbers: string): number {
   if (numbers.startsWith("//")) {
     const delimiterEndIndex = numbers.indexOf("\n");
     customDelimiter = numbers.slice(2, delimiterEndIndex);
+    // To support custom delimiter of any length
+    // It should be wrapped in square brackets
+    if (customDelimiter.startsWith("[") && customDelimiter.endsWith("]"))
+      customDelimiter = customDelimiter.slice(1, customDelimiter.length - 1);
     numbers = numbers.slice(delimiterEndIndex + 1);
   }
 
